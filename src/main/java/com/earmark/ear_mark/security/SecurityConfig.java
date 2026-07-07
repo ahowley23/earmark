@@ -30,6 +30,7 @@ public class SecurityConfig {
            .authorizeHttpRequests(auth -> auth
             // Public endpoints — no token needed
             .requestMatchers("/api/auth/**", "/api/test/**").permitAll()
+            .requestMatchers("/api/auth/**", "/api/test/**", "/api/spotify/callback").permitAll()
             // Everything else requires a valid JWT
             .anyRequest().authenticated()
 )
