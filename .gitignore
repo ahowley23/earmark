@@ -1,0 +1,20 @@
+# Maven
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Environment — NEVER commit these
+application-local.properties
+*.env
+.env
+
+# OS
+.DS_Store
+output.log
