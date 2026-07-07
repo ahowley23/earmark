@@ -45,10 +45,9 @@ public class JwtService {
     }
 
     // Checks expiration by comparing token's expiry date against now
-    public boolean isTokenExpired(String token) {
-        return extractAllClaims(token).getExpiration().before(new Date());
-    }
-
+   public boolean isTokenExpired(String token) {
+    return extractAllClaims(token).getExpiration().before(new Date());
+}
     // Valid means not expired AND username matches
     public boolean isTokenValid(String token, String username) {
         return extractUsername(token).equals(username) && !isTokenExpired(token);
