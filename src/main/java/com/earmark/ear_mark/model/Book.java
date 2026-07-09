@@ -31,8 +31,9 @@ public class Book {
     // Stored as JSON — a book can have multiple genres
     // e.g. ["literary fiction", "dystopian", "political"]
     @Column(columnDefinition = "jsonb")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
     private String genres;
-
+    
     @Column(name = "cover_url", columnDefinition = "TEXT")
     private String coverUrl;
 }
