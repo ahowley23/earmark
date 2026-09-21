@@ -2,6 +2,8 @@ package com.earmark.ear_mark.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,9 +25,11 @@ public class SpotifyCredential {
 
     // This side owns the foreign key column — user_id lives in this table
     // @JoinColumn tells JPA which column to use
+
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false, unique = true)
-    private User user;
+@JoinColumn(name = "user_id", nullable = false, unique = true)
+@JsonIgnoreProperties("spotifyCredential")
+private User user;
 
     @Column(name = "access_token", nullable = false, columnDefinition = "TEXT")
     private String accessToken;
