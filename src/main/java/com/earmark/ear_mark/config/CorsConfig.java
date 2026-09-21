@@ -15,11 +15,9 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allow your Vercel frontend URLs
-        config.setAllowedOrigins(List.of(
+        config.setAllowedOriginPatterns(List.of(
             "http://localhost:5173",
-            "https://frontend-xi-self-62.vercel.app",
-            "https://frontend-llzq-reoc71nmi-amairead23.vercel.app"
+            "https://*.vercel.app"
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
