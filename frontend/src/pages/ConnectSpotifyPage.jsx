@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 export default function ConnectSpotifyPage({ user, onConnected }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -9,9 +11,7 @@ export default function ConnectSpotifyPage({ user, onConnected }) {
     setLoading(true)
     setError(null)
     try {
-      // Get the Spotify authorization URL from our backend
-      const res = await axios.get('/api/spotify/connect')
-      // Redirect the browser to Spotify's login page
+      const res = await axios.get(`${API_BASE}/api/spotify/connect`)
       window.location.href = res.data
     } catch (e) {
       setError('Failed to connect to Spotify. Please try again.')
@@ -22,7 +22,6 @@ export default function ConnectSpotifyPage({ user, onConnected }) {
   return (
     <div className="min-h-screen bg-[#F8F8F6] flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center">
-
         <h1 className="text-4xl font-serif text-[#111111] mb-4">
           Connect Spotify
         </h1>
@@ -33,7 +32,6 @@ export default function ConnectSpotifyPage({ user, onConnected }) {
           Earmark reads your top artists to build a taste profile, then recommends books that match your music.
         </p>
 
-        {/* What we access */}
         <div className="bg-white border border-[#E2E2DC] rounded-xl p-6 mb-8 text-left">
           <p className="text-xs font-mono text-[#6B7280] uppercase tracking-widest mb-4">
             What we access

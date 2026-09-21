@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import axios from 'axios'
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 export default function CallbackPage({ onConnected }) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -12,8 +14,7 @@ export default function CallbackPage({ onConnected }) {
       return
     }
 
-    // Call our backend callback endpoint
-    axios.get(`/api/spotify/callback?code=${code}&state=${state}`)
+    axios.get(`${API_BASE}/api/spotify/callback?code=${code}&state=${state}`)
       .then(() => onConnected(true))
       .catch(() => onConnected(false))
   }, [])
